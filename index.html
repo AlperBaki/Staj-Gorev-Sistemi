@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staj Defteri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="title-block">
+      <h1>STAJ GÖREV SİSTEMİ</h1>
+      <p>GÖREV KAYIT VE TAKİP SİSTEMİ</p>
+    </div>
+    <div class="today-tag" id="todayTag"></div>
+  </header>
+
+  <div class="layout">
+
+    <!-- FORM -->
+    <div class="index-card">
+      <h2>Yeni Görev Kaydı</h2>
+
+      <div class="field">
+        <label for="taskInput">Yapılan İş</label>
+        <input type="text" id="taskInput" placeholder="Örn. Login sayfası validasyonu">
+      </div>
+
+      <div class="field">
+        <label for="descInput">Açıklama</label>
+        <textarea id="descInput" rows="3" placeholder="Yapılan işin detaylarını yazın"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="dateInput">Tarih</label>
+        <input type="date" id="dateInput">
+      </div>
+
+      <div class="field">
+        <label>Durum</label>
+        <div class="status-toggle" id="statusToggle">
+          <button type="button" data-s="devam" class="active">Devam Ediyor</button>
+          <button type="button" data-s="tamam">Tamamlandı</button>
+        </div>
+      </div>
+
+      <div class="field" id="progressField">
+        <label for="progressInput">İlerleme (%)</label>
+        <div class="progress-input-row">
+          <input type="range" id="progressInput" min="0" max="100" step="5" value="0">
+          <span id="progressValue">0%</span>
+        </div>
+      </div>
+
+      <button class="submit-btn" id="addBtn">Kaydı Ekle</button>
+    </div>
+
+    <!-- LIST -->
+    <div>
+      <div class="list-head">
+        <div class="tabs" id="tabs">
+          <button data-f="tumu" class="active">Tümü <span class="count-tag" id="cAll"></span></button>
+          <button data-f="devam">Devam Eden <span class="count-tag" id="cDevam"></span></button>
+          <button data-f="tamam">Tamamlanan <span class="count-tag" id="cTamam"></span></button>
+        </div>
+        <button class="danger-btn" id="deleteAllBtn">Tümünü Sil</button>
+      </div>
+      <div class="tabs-bar-line"></div>
+
+      <div class="task-list" id="taskList"></div>
+    </div>
+
+  </div>
+
+  <div class="save-msg" id="saveMsg"></div>
+</div>
+
+<!-- Delete-all confirm modal -->
+<div class="modal-overlay" id="modalOverlay" style="display:none;">
+  <div class="modal-box">
+    <h3>Emin misiniz?</h3>
+    <p>Bu işlem tüm görev kayıtlarını kalıcı olarak silecek. Bu işlem geri alınamaz.</p>
+    <div class="modal-actions">
+      <button class="cancel" id="modalCancel">Vazgeç</button>
+      <button class="confirm" id="modalConfirm">Evet, Tümünü Sil</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
